@@ -16,7 +16,7 @@ on:
     paths:
       - "**.js" # matches any JavaScript file in the repository
       - "!docs/**" # excludes any file in the "docs" directory
-  workflow_run:
+
   pull_request: 
     types: [opened, assigned, reopened, synchronize]
     branches: [main]
