@@ -2,8 +2,18 @@ name: Workdir and Shells
 on: [push]
 
 jobs:
-  display-wd-info:
+  display-wd-info-linux:
     runs-on: ubuntu-latest
+    steps:
+      - name: Display working directory
+        run: |
+          pwd
+          ls
+          echo $GITHUB_SHA
+          echo $GITHUB_REPOSITORY
+          echo $GITHUB_WORKSPACE
+  display-wd-info-windows:
+    runs-on: windows-latest
     steps:
       - name: Display working directory
         run: |
