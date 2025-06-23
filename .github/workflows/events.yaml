@@ -13,9 +13,9 @@ on:
     #  - "!v1.1.1"
     # tags-ignore:
     #   - v2.*
-    #paths:
-    #  - "**.js" # matches any JavaScript file in the repository
-    #  - "!docs/**" # excludes any file in the "docs" directory
+    paths:
+      - "**.js" # matches any JavaScript file in the repository
+      - "!docs/**" # excludes any file in the "docs" directory
 
   pull_request: 
     types: [opened, assigned, reopened, synchronize]
