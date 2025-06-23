@@ -1,8 +1,27 @@
 name: Repository Events
 on:
   push:
+    branches: 
+      - main
+      - "feature/*" # matches any branch that starts with "feature/" 
+      - "feature/**" # matches any branch that starts with "feature/" and includes subbranches
+      - "!feature/featA" # excludes the branch "feature/featA"
+    # branches-ignore:
+    #   - develop
+    tags:
+      - v1.* # matches any tag that starts with "v1."
+      - "!v1.1.1"
+    # tags-ignore:
+    #   - v2.*
+    paths:
+      - "**.js" # matches any JavaScript file in the repository
+      - "!docs/**" # excludes any file in the "docs" directory
+  workflow_run:
   pull_request: 
     types: [opened, assigned, reopened, synchronize]
+    branches: [main]
+    paths:
+      - "**.js"
   issues:
     types: [opened]
 
