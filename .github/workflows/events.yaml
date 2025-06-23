@@ -2,7 +2,7 @@ name: Repository Events
 on:
   push:
     branches: 
-      - main
+      - "main"
       - "feature/*" # matches any branch that starts with "feature/" 
       - "feature/**" # matches any branch that starts with "feature/" and includes subbranches
       - "!feature/featA" # excludes the branch "feature/featA"
