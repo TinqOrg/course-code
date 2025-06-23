@@ -1,0 +1,16 @@
+name: Stale Issues & PRs
+on:
+  schedule:
+    - cron: '15 15 * * *'  # Runs daily at 15:15 UTC
+    - cron: '0/5 * * * *'
+  workflow_dispatch:  # Allows manual triggering of the workflow
+
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/stale@v6
+        with:
+          stale-issue-message: "This issue has been automatically marked as stale"
+          days-before-stale: 1
+          days-before-close: 5         
