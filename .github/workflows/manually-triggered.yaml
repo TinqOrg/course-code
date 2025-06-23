@@ -1,7 +1,12 @@
 name: Manually Triggered 
 on:
   workflow_dispatch:
-
+    inputs:
+      string:
+        description: 'String to echo'
+        type: string
+        required: true
+        default: 'Default value'
 jobs:
   log-info:
     runs-on: ubuntu-latest
