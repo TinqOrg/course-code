@@ -1,9 +1,17 @@
 name: Environment Variables
 on: [push]
 
+env: 
+  WF_LEVEL_ENV: Available to all jobs
+
 jobs:
   env-vars-and-context:
     runs-on: ubuntu-latest
+    # if: $GITHUB_REF == 'refs/heads/main' DON'T DO THIS 
+    # the if part is evaluated before the job starts, so it will not have access to the environment variables 
+    if: github.ref == 'refs/heads/main' 
+    env:
+      JOB_LEVEL_ENV: Available to all steps in this job
     steps: 
       - name: Log ENV VAR
         # environment variables are interpolated on the runner machine
@@ -11,3 +19,13 @@ jobs:
       - name: Log Context
         # context variables are interpolated on the GitHub server, so the value will be available immediately on the runner
         run: echo '${{ github.ref }}'
+      - name: Log Custom Env Vars
+        env: 
+          STEP_LEVEL_ENV: Available to this step only
+          WF_LEVEL_ENV: Overridden in step
+        run: |
+          echo "${{ env.STEP_LEVEL_ENV}}"
+          echo $STEP_LEVEL_ENV
+          echo $JOB_LEVEL_ENV
+          echo $WF_LEVEL_ENV
+          
