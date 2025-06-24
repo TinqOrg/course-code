@@ -7,7 +7,7 @@ jobs:
   pr-comment:
     runs-on: ubuntu-latest
     permissions:
-      issues: write  # Required to comment on the PR
+      pull-requests: write  # Required to comment on the PR
     steps:
       - name: Comment on New PRs
         uses: actions/github-script@v6
