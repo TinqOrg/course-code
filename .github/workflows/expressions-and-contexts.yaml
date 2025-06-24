@@ -13,7 +13,7 @@ jobs:
         run: echo ${{ join(github.event.issue.labels.*.name, ', ') }} # prints all labels on the issue
   using-expressions-and-contexts:
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'push' }}
+    if: github.event_name == 'push'
     steps:
       - name: Expressions
         id: expressions
