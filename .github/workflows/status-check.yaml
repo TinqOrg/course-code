@@ -11,7 +11,7 @@ jobs:
         id: step-2
         run: exit 1
       - name: Runs on Failure
-        if: steps.step-2.conclusion == 'failure'        
+        if: failure() && steps.step-2.conclusion == 'failure'        
         run: echo "Runs only if step 2 has failed"
       - name: Runs on Success
         # this is not needed because it is the default behavior
