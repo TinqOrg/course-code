@@ -1,0 +1,13 @@
+name: Environment Variables
+on: [push]
+
+jobs:
+  env-vars-and-context:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Log ENV VAR
+        # environment variables are interpolated on the runner machine
+        run: echo $GITHUB_REF
+      - name: Log Context
+        # context variables are interpolated on the GitHub server, so the value will be available immediately on the runner
+        run: echo '${{ github.ref }}'
