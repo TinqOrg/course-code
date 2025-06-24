@@ -19,6 +19,10 @@ jobs:
       - name: Log Context
         # context variables are interpolated on the GitHub server, so the value will be available immediately on the runner
         run: echo '${{ github.ref }}'
+      - name: Set Env Var
+        run: |
+          echo "NEW_ENV_VAR=$(date)" >> $GITHUB_ENV
+          echo "JOB_LEVEL_ENV=$RANDOM" >> $GITHUB_ENV
       - name: Log Custom Env Vars
         env: 
           STEP_LEVEL_ENV: Available to this step only
@@ -28,4 +32,5 @@ jobs:
           echo $STEP_LEVEL_ENV
           echo $JOB_LEVEL_ENV
           echo $WF_LEVEL_ENV
+          echo $NEW_ENV_VAR
           
