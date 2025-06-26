@@ -19,7 +19,7 @@ jobs:
         id: matrix-arrays
         with: 
           script: "return { os: context.payload.inputs['os'].split(',').map(os => os.trim()),
-           node-version: context.payload.inputs['node-version'].split(',').map(node-version => node-version.trim()) }"
+           node-version: context.payload.inputs['node-version'].split(',').map(nodeVersion => nodeVersion.trim()) }"
           result-encoding: json
       - run: echo '${{ steps.matrix-arrays.outputs.result}}'
       - run: echo "step-output=value" >> $GITHUB_OUTPUT
