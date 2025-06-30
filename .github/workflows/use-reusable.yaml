@@ -1,0 +1,18 @@
+name: Using Reusable Workflow
+on:
+  workflow_dispatch:
+    inputs:
+      name: 
+        description: "Input Description"
+        required: false
+        type: string
+        default: "Tinqiu"
+
+jobs:
+  calling-reusable-workflow:
+    uses: TinqOrg/workflows/.github/workflows/reusable.yaml@main
+    with:
+      name: ${{ inputs.name}}
+    secrets: 
+      access-token: ${{ secrets.ACCESS_TOKEN }}
+
